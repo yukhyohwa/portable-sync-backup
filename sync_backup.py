@@ -76,11 +76,17 @@ def sync_pair(config):
 
     print(f"\nPending Changes:")
     if to_add:
-        print(f"  [New] {len(to_add)} files")
+        print(f"  [New] {len(to_add)} files:")
+        for f in to_add:
+            print(f"    + {f}")
     if to_update:
-        print(f"  [Update] {len(to_update)} files")
+        print(f"  [Update] {len(to_update)} files:")
+        for f in to_update:
+            print(f"    ~ {f}")
     if to_delete:
-        print(f"  [Delete] {len(to_delete)} files (not present in source)")
+        print(f"  [Delete] {len(to_delete)} files (not present in source):")
+        for f in to_delete:
+            print(f"    - {f}")
 
     confirm = input("\nDo you want to proceed with sync? (y/n): ").lower()
     if confirm != 'y':
