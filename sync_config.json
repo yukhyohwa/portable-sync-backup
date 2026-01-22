@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Code Base Backup",
+        "source": "C:\\Users\\5xgames\\Desktop\\github",
+        "destination": "E:\\Backup\\github",
+        "exclude": [
+            ".git",
+            "__pycache__",
+            "node_modules",
+            ".venv"
+        ]
+    },
+    {
+        "name": "Documents Backup",
+        "source": "C:\\Users\\5xgames\\Documents",
+        "destination": "E:\\Backup\\Documents",
+        "exclude": []
+    }
+]
