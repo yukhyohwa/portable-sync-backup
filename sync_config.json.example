@@ -1,0 +1,13 @@
+[
+    {
+        "name": "Example Backup Task",
+        "source": "C:\\Path\\To\\Source",
+        "destination": "D:\\Path\\To\\Destination",
+        "exclude": [
+            ".git",
+            "__pycache__",
+            "node_modules",
+            ".venv"
+        ]
+    }
+]
