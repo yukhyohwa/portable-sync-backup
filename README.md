@@ -1,4 +1,4 @@
-# Sync Backup
+# Portable Sync Backup
 
 A simple and efficient Python-based file synchronization tool designed for backing up local folders to external drives (like USB sticks) or other local directories.
 
@@ -19,8 +19,8 @@ A simple and efficient Python-based file synchronization tool designed for backi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yukhyohwa/sync-backup.git
-   cd sync-backup
+   git clone https://github.com/yukhyohwa/portable-sync-backup.git
+   cd portable-sync-backup
    ```
 
 2. (Optional) Create a virtual environment:
