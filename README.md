@@ -1,68 +1,129 @@
-# Portable Sync Backup
+# 🚀 Portable Sync Backup
 
-A simple and efficient Python-based file synchronization tool designed for backing up local folders to external drives (like USB sticks) or other local directories.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/yukhyohwa/portable-sync-backup/graphs/commit-activity)
+[![GitHub repo size](https://img.shields.io/github/repo-size/yukhyohwa/portable-sync-backup)](https://github.com/yukhyohwa/portable-sync-backup)
+[![GitHub last commit](https://img.shields.io/github/last-commit/yukhyohwa/portable-sync-backup)](https://github.com/yukhyohwa/portable-sync-backup/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/yukhyohwa/portable-sync-backup)](https://github.com/yukhyohwa/portable-sync-backup/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/yukhyohwa/portable-sync-backup)](https://github.com/yukhyohwa/portable-sync-backup/pulls)
 
-## Features
+A professional, lightweight, and robust file synchronization tool built in Python. Perfect for maintaining mirrors of your critical projects on portable drives, USB sticks, or secondary local storage.
 
-- **Smart Comparison**: Compares files based on modification time and file size to detect changes.
-- **Mirror Sync**: Ensures the destination folder is an exact mirror of the source (handles additions, updates, and deletions).
-- **Multi-Task Configuration**: Supports multiple sync pairs in a single configuration file.
-- **Exclusion List**: Ability to skip specific directories or files (e.g., `.git`, `node_modules`).
-- **Safety First**: Provides a summary of changes and requires manual confirmation before performing any write/delete operations.
-- **Metadata Preservation**: Uses `shutil.copy2` to preserve file timestamps.
+---
 
-## Prerequisites
+## ✨ Key Features
 
-- Python 3.x
+-   **🔍 Smart Diffing**: High-performance comparison using file modification timestamps and sizes.
+-   **🪞 Mirror Mode**: Syncs source to destination accurately, handling new files, updates, and orphaned deletions.
+-   **📂 Multi-Task Support**: Configure and execute multiple independent sync tasks in one run.
+-   **🚫 Intelligent Exclusions**: Skip large or sensitive directories like `.git`, `node_modules`, or `__pycache__`.
+-   **📅 Detailed Logging**: Automated generation of timestamped logs for every operation, tracking exactly what was changed.
+-   **🛡️ Safety First**: Interactive summaries and confirmation prompts prevent accidental data loss.
+-   **🦾 Automation Ready**: Command-line flags (e.g., `--yes`) for non-interactive execution (perfect for scheduled tasks).
+-   **✅ Task Toggling**: Easily enable or disable specific sync tasks via the `enabled` configuration property.
 
-## Installation
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yukhyohwa/portable-sync-backup.git
-   cd portable-sync-backup
-   ```
+## 🛠️ Installation
 
-2. (Optional) Create a virtual environment:
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/portable-sync-backup.git
+cd portable-sync-backup
+```
 
-## Configuration
+### 2. Setup (Optional but Recommended)
+Create a virtual environment to keep your system Python clean:
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# Linux/macOS
+source .venv/bin/activate
+```
 
-Modify `sync_config.json` to define your sync tasks:
+---
 
+## ⚙️ Configuration
+
+Copy the example configuration to create your own:
+```bash
+cp config/sync_config.json.example config/sync_config.json
+```
+
+### Configuration Schema
+Edit `config/sync_config.json` with your project paths:
 ```json
 [
     {
-        "name": "My Project Backup",
-        "source": "C:\\path\\to\\source",
-        "destination": "D:\\path\\to\\backup",
-        "exclude": [".git", "node_modules", "__pycache__"]
+        "name": "Project Alpha",
+        "source": "C:\\Users\\User\\Projects\\Alpha",
+        "destination": "E:\\Backup\\Alpha",
+        "enabled": true,
+        "exclude": [".git", "node_modules", ".venv"]
     }
 ]
 ```
 
-- `name`: A descriptive name for the task.
-- `source`: The folder you want to back up.
-- `destination`: The target folder where the backup will be stored.
-- `exclude`: List of file or folder names to ignore.
+| Key | Description |
+| :--- | :--- |
+| `name` | Identity of the sync task. |
+| `source` | Absolute path to the source folder. |
+| `destination` | Absolute path to the destination folder. |
+| `enabled` | `true` (default) or `false`. Disabled tasks are skipped. |
+| `exclude` | List of folder/file names to ignore during sync. |
 
-## Usage
+---
 
-Simply run the script:
+## 🚀 Usage
+
+Run the sync tool from the root directory:
 
 ```bash
-python sync_backup.py
+python sync_backup.py [options]
 ```
 
-The script will:
-1. Scan the source and destination.
-2. Display a summary of pending changes (New, Update, Delete).
-3. Wait for your confirmation (`y/n`).
-4. Execute the synchronization if confirmed.
+### Command Line Options
 
-## License
+| Option | Shorthand | Description |
+| :--- | :--- | :--- |
+| `--yes` | `-y` | Skip the confirmation prompt and execute immediately. |
+| `--help` | `-h` | Show help message and exit. |
 
-MIT
+---
+
+## 📂 Project Structure
+
+```text
+portable-sync-backup/
+├── src/                # Internal application logic
+│   └── portable_sync/  # Core package
+├── config/             # Configuration files
+│   ├── sync_config.json        # Your private configuration (ignored by Git)
+│   └── sync_config.json.example # Template for new users
+├── logs/               # Automated execution logs (generated at runtime)
+├── sync_backup.py      # Main execution script (entry point)
+├── .gitignore          # Standard Python ignore rules
+├── LICENSE             # MIT License
+└── README.md           # You are here!
+```
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
